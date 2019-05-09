@@ -1,9 +1,6 @@
 ## arp-em
 * Arpspoofing via scapy
 
-## pmkid2hashcat
-* Weaponizing the PMKID attack as demonstrated by atom
-
 ## quickset
 * A quick way to implement MITM style attacks for wired or wireless scenarios
 
