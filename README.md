@@ -7,7 +7,7 @@
 ## quickset
 * A quick way to implement MITM style attacks for wired or wireless scenarios
 
-## surfpwn.sh
+## surfpwn
 * Motorola SBG6580 bruteforce password decoder
 
 ## wigleEarth
