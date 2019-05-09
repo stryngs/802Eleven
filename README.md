@@ -13,14 +13,12 @@
 ## wigleEarth
 * Plot out wifi accesspoints using the wigle sqlite database
 
-# pmkid2hashcat
+## pmkid2hashcat
 Came across:
 https://hashcat.net/forum/thread-7717.html
 
 Wanted to cleanup and make an attack script...
-
-Enter <b>pmkid2hashcat!</b>
-
-## Pre-req
+</br></br>
+# Pre-req
 https://github.com/ICSec/packetEssentials
 
