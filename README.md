@@ -1,9 +1,6 @@
 ## arp-em
 * Arpspoofing via scapy
 
-## firewall
-* Useful scripts for firewalls
-
 ## pmkid2hashcat
 * Weaponizing the PMKID attack as demonstrated by atom
 
