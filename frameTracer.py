@@ -29,31 +29,30 @@ def main(args):
     else:
         verbosity = False
 
-    ## Env recon
-    if args.e is True:
-        pHandler = PE.hd.metaDump(verbose = verbosity)
-    else:
+    """
+    Perhaps retool mpTrafficCap and soloCap to be split functions for speed?
+    """
 
-        ## Trace a pair
-        if args.y is not None:
-            if args.c is not None:
-                pHandler = PE.hd.mpTrafficCap(args.x.lower(), args.y.lower(), q = args.c, verbose = verbosity)
-            else:
-                pHandler = PE.hd.mpTraffic(args.x.lower(), args.y.lower(), verbose = verbosity)
-
-        ## Trace a single
+    ## Trace a pair
+    if args.y is not None:
+        if args.c is not None:
+            pHandler = PE.hd.mpTrafficCap(args.x.lower(), args.y.lower(), q = args.c, verbose = verbosity)
         else:
-            if args.c is not None:
-                pHandler = PE.hd.soloCap(args.x.lower(), q = args.c, verbose = verbosity)
-            else:
-                pHandler = PE.hd.solo(args.x.lower(), verbose = verbosity)
+            pHandler = PE.hd.mpTrafficCap(args.x.lower(), args.y.lower(), verbose = verbosity)
+
+    ## Trace a single
+    else:
+        if args.c is not None:
+            pHandler = PE.hd.soloCap(args.x.lower(), q = args.c, verbose = verbosity)
+        else:
+            pHandler = PE.hd.soloCap(args.x.lower(), verbose = verbosity)
 
     ## pcap as an input
     if args.f is None:
         pkts = sniff(iface = args.i, prn = pHandler, store = 0)
     else:
         pkts = sniff(offline = args.f, prn = pHandler, store = 0)
-        if args.c is None:
+        if args.c is None: ## Need to add mutual exclusion for pcap read -or- the option
             if len(PE.hd.soloList) > len(PE.hd.mpTrafficList):
                 wrpcap('solo.pcap', PE.hd.soloList)
             else:
@@ -64,7 +63,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description = 'frameTracer')
     parser.add_argument('--graph', action = 'store_true', help = 'Visualize the data via plotly')
     parser.add_argument('-c', metavar = 'frame count to capture', help = 'frame count to capture')
-    parser.add_argument('-e', help = 'environment awareness', action = 'store_true')
     parser.add_argument('-f', metavar = 'read from pcap', help = 'read from pcap') ## Not ideal for large pcaps, need PcapReader() instead
     parser.add_argument('-i', metavar = 'interface', help = 'interface', required = True)
     parser.add_argument('-x', metavar = 'mac X', help = 'mac X')
