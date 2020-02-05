@@ -12,6 +12,9 @@ Wanted to cleanup and make an attack script...
 ## quickset
 * A quick way to implement MITM style attacks for wired or wireless scenarios
 
+## rSpotter
+* Spot the shots with an RSSI
+
 ## surfpwn
 * Motorola SBG6580 bruteforce password decoder
 
@@ -21,4 +24,3 @@ Wanted to cleanup and make an attack script...
 </br></br>
 # Pre-req
 https://github.com/ICSec/packetEssentials
-
