@@ -4,6 +4,10 @@
 ## frameTracer
 * Follow a single or pair of MAC addresses
 
+## os_control
+* Channel hopping Class
+* NIC manipulation Class
+
 ## pmkid2hashcat
 Came across:
 https://hashcat.net/forum/thread-7717.html</br>
