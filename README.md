@@ -13,9 +13,6 @@ Came across:
 https://hashcat.net/forum/thread-7717.html</br>
 Wanted to cleanup and make an attack script...
 
-## quickset
-* A quick way to implement MITM style attacks for wired or wireless scenarios
-
 ## rSpotter
 * Spot the shots with an RSSI
 
