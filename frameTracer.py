@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 """
 Trace a framed based on a MAC or pair of MACs
 
@@ -9,8 +9,9 @@ Use macX as the quietest of the MACs
 try:
     from queue import Queue, Empty
 ## Python 2
-except ImportError:
+except Exception as E:
     from Queue import Queue, Empty
+    print(E)
 
 import argparse
 import binascii
@@ -45,9 +46,9 @@ class Threader(object):
         ## Trace a single
         else:
             if self.args.c is not None:
-                PE.hd.soloCapThreaded(pkt, self.args.x.lower(), q = self.args.c, verbose = self.args.v)
+                PE.hd.soloThreaded(pkt, self.args.x.lower(), q = self.args.c, verbose = self.args.v)
             else:
-                PE.hd.soloCapThreaded(pkt, self.args.x.lower(), verbose = self.args.v)     
+                PE.hd.soloThreaded(pkt, self.args.x.lower(), verbose = self.args.v)
 
         ## Queue
         #print(' Current queue of {0}'.format(q.qsize()))
@@ -60,7 +61,7 @@ class Threader(object):
         sniff(iface = self.args.i, prn = lambda x: q.put(x), store = 0)
 
     def threaded_sniff(self):
-        q = Queue()
+        q = Queue()                                                             ### Troublesome with python2, odd.
         sniffer = Thread(target = self.sniff, args = (q,))
         sniffer.daemon = True
         sniffer.start()
@@ -85,7 +86,7 @@ def main(args):
     """
     Perhaps retool mpTrafficCap and soloCap to be split functions for speed?
     """
-    
+
     if args.t is False:
 
         ## Trace a pair
@@ -119,7 +120,7 @@ def main(args):
         thd = Threader(args)
         thd.threaded_sniff()
 
-    
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description = 'frameTracer')
     parser.add_argument('--graph', action = 'store_true', help = 'Visualize the data via plotly')
@@ -132,5 +133,5 @@ if __name__ == '__main__':
     parser.add_argument('-v', help = 'verbose', action = 'store_true')
     args = parser.parse_args()
     main(args)
-    
+
 ### Add easy-thread
