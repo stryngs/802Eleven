@@ -1,6 +1,10 @@
 ## arp-em
 * Arpspoofing via scapy
 
+## foxHunter
+* Target a given MAC based on Source Address as prescribed by IEEE
+* Shows the RSSI of said MAC
+
 ## frameTracer
 * Follow a single or pair of MAC addresses
 
