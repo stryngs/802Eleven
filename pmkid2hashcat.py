@@ -1,8 +1,13 @@
 #!/usr/bin/env python
 """
-./hashcat64.bin -m 16800 hashes.file -a 3 -w 3 <psk>
+hcxdumptool -i wlan1mon --enable_status 1
+python3 ./pmkid2hashcat.py -i wlan1mon -v
+hashcat -m 16800 hashes.file -a 3 -w 3 <psk>
 
 Adjust under __main__ accordingly prior to launch
+
+Left to do:
+  Have scapy perform the hcxdumptool functionality
 """
 import argparse
 import binascii
@@ -70,20 +75,6 @@ def packetHandler():
     return snarf
 
 
-## Prep
-essidDict = {}
-pmkDict = {}
-xList = []
-count = 1
-qty = 0
-
-## FS cleanup
-try:
-    os.remove('hashes.file')
-except:
-    pass
-
-
 def main(args):
     pHandler = packetHandler()
 
@@ -97,6 +88,12 @@ def main(args):
         for p in pkts:
             pHandler(p)
 
+## Prep
+essidDict = {}
+pmkDict = {}
+xList = []
+count = 1
+qty = 0
 
 if __name__ == '__main__':
     ## ARGUMENT PARSING
