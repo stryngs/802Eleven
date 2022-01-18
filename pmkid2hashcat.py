@@ -147,7 +147,7 @@ if len(capSet) > 0:
 
 ## ARGUMENT PARSING
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description = 'frameTracer')
+    parser = argparse.ArgumentParser(description = 'pmkid2hashcat')
     group = parser.add_mutually_exclusive_group(required = True)
     group.add_argument('-f', metavar = '<capture file>', help = 'PCAP to parse')
     group.add_argument('-i', metavar = '<interface>', help = 'Interface to sniff on')
