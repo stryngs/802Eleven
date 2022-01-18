@@ -18,7 +18,7 @@
 ## pmkid2hashcat
 Came across:
 https://hashcat.net/forum/thread-7717.html</br>
-Wanted to cleanup and make an attack script...
+Wanted to cleanup and make an attack script using only scapy
 
 ## rSpotter
 * Spot the shots with an RSSI
