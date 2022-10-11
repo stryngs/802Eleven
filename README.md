@@ -1,11 +1,5 @@
 # A home for 802.11 ideas that don't need a whole repository.
 
-## airpunt
-* Deauthenticate targets and track EAPOLs
-
-## frameTracer
-* Follow a single or pair of MAC addresses
-
 ## pmkid2hashcat
 Came across:
 https://hashcat.net/forum/thread-7717.html</br>
